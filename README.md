@@ -27,9 +27,9 @@ Each row of the training data contains a click record, with the following featur
 
 ## Feature Engineering
 
-The main hand crafted features are about:
+The main handcrafted features are about:
 
-* the time lapse to previous or next click with same ip, app, device, os
+* the time lapse to previous and next click with same ip, app, device, os
 * Number of clicks with same (ip, os), (ip, device), (ip, app),.. during the same minute, hour or the whole week.
 
 
@@ -47,6 +47,6 @@ I previously did a manual implemntation from scrach but there are easier and mor
 
 The 3 kinds of models trained here are:
 
-* logistic regression on hashed features: trained on 40% of the training data, cross-validation on 10% and scoring on the remaining 50% of the training data. The idea here is to generate a score from the linear model and stack it on a gradient boosting trained later. Using feature hashing can play a considerable role of regularization (reducing overfitting to the effect of ips, apps, etc.)
-* random forest (serves only for training a stacking model and evaluate the performance of features quickly using spark)
+* logistic regression on hashed features: trained on 40% of the training data, cross-validation on 10% and scoring on the remaining 50% of the training data. The idea here is to generate a score from the linear model and stack it on a gradient boosting trained later. Using feature hashing can play a considerable role of regularization (reducing the overfitting due to the effect of ips, apps, etc.)
+* random forest (serves only for training a stacking model and evaluating the performance of features quickly using spark)
 * xgboost (final model to generate predictions using the same features and trained in R)
